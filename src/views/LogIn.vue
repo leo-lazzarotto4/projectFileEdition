@@ -4,10 +4,14 @@ import InputText from 'primevue/inputtext'
 import { RouterLink } from 'vue-router' // Assurez-vous d'importer RouterLink
 import useAuthService from '@/composables/useAuthService';
 
-const { loginUsername, loginPassword, handleLogin, errorMessage } = useAuthService()
+const { loginUsername, loginPassword, handleLogin, errorMessage, isRegistered } = useAuthService()
 
 const handleLoginClick = async () => {
-  await handleLogin() // Appelle la méthode de connexion
+  await handleLogin()
+  if (!errorMessage.value || isRegistered.value) {
+    // Rediriger vers la page d'accueil apres la connexion
+    window.location.href = '/'
+  }
 }
 </script>
 

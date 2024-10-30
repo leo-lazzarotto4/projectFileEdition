@@ -1,5 +1,10 @@
 <script setup lang="ts">
 import TopBar from '@/components/TopBar.vue';
+import useApiService from './composables/useApiService';
+
+const { getWorkflows } = useApiService() 
+
+console.log(getWorkflows())
 </script>
 
 <template>

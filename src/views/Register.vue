@@ -3,11 +3,20 @@ import Button from 'primevue/button'
 import InputText from 'primevue/inputtext'
 import useAuthService from '@/composables/useAuthService';
 
-const { registerUsername, registerPassword, handleRegister, errorMessage } = useAuthService()
+const { registerUsername, registerPassword, handleRegister, errorMessage, isRegistered } = useAuthService()
 
 const handleRegisterClick = async () => {
-  await handleRegister() // Appelle la méthode d'inscription
+  await handleRegister()
+
+  if (isRegistered.value) {
+    // Ajouter un délai de 3 secondes avant la redirection
+    await new Promise((resolve) => setTimeout(resolve, 3000))
+
+    // Rediriger vers la page de connexion après le délai
+    window.location.href = '/LogIn'
+  }
 }
+
 </script>
 
 

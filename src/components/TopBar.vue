@@ -3,8 +3,32 @@ import Menubar from 'primevue/menubar';
 import Button from 'primevue/button';
 import { items } from '@/models/TopBarItems.type';
 import useAuthService from '@/composables/useAuthService';
+import { getWorkflows } from '@/services/apiService';
+import { onMounted, ref } from 'vue';
+import { Worflow } from '../models/workflow.type';
+
+const workflows = ref<Worflow[]>([]);
 
 const { currentUser, handleLogout } = useAuthService()
+
+const fetchWorkflows = async () => {
+    try {
+        const response = await getWorkflows()
+        workflows.value = response
+
+        // Remplissage des éléments de workflow dans items
+        const myWorkflowsItem = items.value[2].items[2]
+        myWorkflowsItem.items = workflows.value.map(workflow => ({
+            label: workflow.name,
+            icon: 'pi pi-palette',
+            to: `/workflow/${workflow.id}`
+        }))
+    } catch (error) {
+        console.error('Error fetching workflows:', error)
+    }
+}
+
+onMounted(fetchWorkflows)
 </script>
 
 
