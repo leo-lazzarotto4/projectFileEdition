@@ -6,7 +6,14 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "start:ms2_ia": "npm --prefix ms2_ia run start",
+    "start:projet-auth": "npm --prefix projet-auth run start",
+    "start:all": "npm-run-all -s start:ms2_ia start:projet-auth dev",
+    "i:ms2_ia": "npm --prefix ms2_ia install",
+    "i:projet-auth": "npm --prefix projet-auth install",
+    "i:root": "npm install",
+    "i": "npm-run-all -p i:ms2_ia i:projet-auth i:root"
   },
   "dependencies": {
     "axios": "^1.7.7",
@@ -19,6 +26,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.1.4",
-    "vite": "^5.4.8"
+    "vite": "^5.4.8",
+    "npm-run-all": "^4.1.5"
   }
 }
