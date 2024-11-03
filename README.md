@@ -3,9 +3,15 @@
 ## Auteur
 Léo LAZZAROTTO
 
+## Importation fichier
+
+mettre le fichier ms2_ia à l'intérieur de votre fichier locale projetFileEdition
+
+Dans le main.ts de ce fichier changer le port d'ecoute sur 3001
+
 ## Installation des Dépendances
 
-Avant de commencer, assurez-vous d'avoir installé toutes les dépendances nécessaires. Pour ce faire, exécutez la commande suivante à la racine de votre projet :
+Avant de commencer, assurez-vous d'avoir ajouter le projet ms2_ia dans le projet projetFileEdition. Ensuite exécutez la commande suivante à la racine de votre projet :
 
 ```bash
 npm run i
